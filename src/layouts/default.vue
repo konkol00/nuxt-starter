@@ -1,7 +1,7 @@
 <script setup>
   const pageUrl = 'Nuxt-Starter';
   const pageTitle = 'Nuxt-Starter';
-  const pageDescription = 'Nuxt-Starter';
+  const pageDescription = 'Responsive, fast and modern Nuxt.js starter project';
   useHead({
     htmlAttrs: {
       lang: 'pl'

@@ -1,0 +1,40 @@
+/* athiti-regular - latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Athiti';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/athiti-v12-latin-ext-regular.woff2') format('woff2');
+}
+
+/* athiti-500 - latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Athiti';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/assets/fonts/athiti-v12-latin-ext-500.woff2') format('woff2');
+}
+
+/* athiti-600 - latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Athiti';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/assets/fonts/athiti-v12-latin-ext-600.woff2') format('woff2');
+}
+
+/* athiti-700 - latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Athiti';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/athiti-v12-latin-ext-700.woff2') format('woff2');
+}
+
+h1 { font-size: clamp(2.15rem, 1.1750rem + 3.0000vw, 4.5rem); }
+h2 { font-size: clamp(1.55rem, 1.1048rem + 0.6452vw, 2.25rem) !important; }
+h3 { font-size: clamp(1.125rem, 1.0161rem + 0.4839vw, 1.5rem) !important; }
+h4 { font-size: clamp(0.875rem, 0.8024rem + 0.3226vw, 1.125rem) !important; }

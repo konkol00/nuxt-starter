@@ -1,0 +1,62 @@
+:root {
+  scroll-behavior: smooth;
+}  
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $white-color;
+  font-family: $font;
+  color: $black-color;
+  margin: 0;
+  line-height: 1.25;
+  box-sizing: border-box;
+
+  & > div {
+    overflow-x: hidden;
+  }
+}
+
+body,
+p,
+a,
+ul,
+li,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: $black-color;
+  font-weight: 500;
+  transition: .3s color ease-in-out;
+  &:hover, &:focus, &:active {
+    color: $primary-color;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+button {
+  all: unset;
+}

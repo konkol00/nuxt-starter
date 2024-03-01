@@ -1,0 +1,109 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  user-select: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  outline: none !important;
+  padding: 0.25rem 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-decoration: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: .3s all ease;
+  z-index: 2;
+
+  &-primary {
+    background-color: $primary-dark;
+    border-color: $primary-color;
+    color: $white-color;
+    font-weight: 600;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transition: all .3s ease-in-out;
+      background: linear-gradient(0deg, $primary-color, transparent);
+      border-radius: inherit;
+      height: 50%;
+      width: 100%;
+      transform: translate(-50%, 100%);
+      z-index: -1;
+    }
+    &:hover::before {
+      transform: scale(1.5)  translate(-50%, 0);
+    }
+    &:hover, &:focus, &:active {
+      color: $white-color;
+      border-color: $primary-dark;
+      box-shadow: 0 5px 30px -5px $primary-color;
+      transform: scale(1.05);
+    }
+  }
+  &-secondary {
+    background-color: $secondary-dark;
+    border-color: $secondary-color;
+    color: $black-color;
+    font-weight: 600;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transition: all .3s ease-in-out;
+      background: linear-gradient(0deg, $secondary-color, transparent);
+      border-radius: inherit;
+      height: 50%;
+      width: 100%;
+      transform: translate(-50%, 100%);
+      z-index: -1;
+    }
+    &:hover::before {
+      transform: scale(1.5)  translate(-50%, 0);
+    }
+    &:hover {
+      color: $white-color;
+      background-color: $secondary-dark;
+      border-color: $secondary-dark;
+      box-shadow: 0 10px 40px -8px $secondary-color;
+      transform: scale(1.05);
+    }
+  }
+  &-secondary--outline {
+    background-color: transparent;
+    border-color: $secondary-color;
+    color: $black-color;
+    font-weight: 600;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transition: all .3s ease-in-out;
+      background: linear-gradient(0deg, $secondary-color, transparent);
+      border-radius: inherit;
+      height: 50%;
+      width: 100%;
+      transform: translate(-50%, 100%);
+      z-index: -1;
+    }
+    &:hover::before {
+      transform: scale(1.5)  translate(-50%, 0);
+    }
+    &:hover, &:focus, &:active {
+      color: $white-color;
+      background-color: $secondary-dark;
+      border-color: $secondary-dark;
+      box-shadow: 0 5px 30px -5px $secondary-color;
+      transform: scale(1.05);
+    }
+  }
+}
