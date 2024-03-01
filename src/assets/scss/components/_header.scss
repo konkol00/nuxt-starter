@@ -29,6 +29,9 @@
     mix-blend-mode: color-burn;
     z-index: 1;
   }
+  &.section {
+    padding: 0;
+  }
   & .container {
     position: relative;
     display: flex;

@@ -34,7 +34,7 @@
   src: url('/assets/fonts/athiti-v12-latin-ext-700.woff2') format('woff2');
 }
 
-h1 { font-size: clamp(2.15rem, 1.1750rem + 3.0000vw, 4.5rem); }
-h2 { font-size: clamp(1.55rem, 1.1048rem + 0.6452vw, 2.25rem) !important; }
-h3 { font-size: clamp(1.125rem, 1.0161rem + 0.4839vw, 1.5rem) !important; }
-h4 { font-size: clamp(0.875rem, 0.8024rem + 0.3226vw, 1.125rem) !important; }
+h1 { font-size: clamp(2.15rem, 3.0000vw + 1.1750rem, 4.5rem); }
+h2 { font-size: clamp(1.55rem, 2.0000vw + 1.1750rem, 2.85rem); }
+h3 { font-size: clamp(1.125rem, 1.8000vw + 1.1750rem, 2.35rem); }
+h4 { font-size: clamp(0.875rem, 1.0000vw + 1.1750rem, 1.425rem); }

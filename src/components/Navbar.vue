@@ -36,19 +36,19 @@
         navigation: [
           {
             name: 'Home',
-            link: '#home',
+            link: '#Header',
           },
           {
             name: 'About',
-            link: '#about',
+            link: '#About',
           },
           {
             name: 'Services',
-            link: '#services',
+            link: '#Services',
           },
           {
             name: 'Contact',
-            link: '#contact',
+            link: '#Contact',
           },
         ],
       }

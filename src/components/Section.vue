@@ -6,7 +6,7 @@
         <span>{{ subtitle }}</span>
         <h2>{{ title }}</h2>
       </div>
-      <div class="section__body">
+      <div class="section__body" :class="`g-${grid}`">
         <slot />
       </div>
     </div>
@@ -15,7 +15,7 @@
 
 <script>
   export default {
-    name: 'section',
+    name: 'Section',
     props: {
       anchor: {
         type: String,
@@ -28,6 +28,10 @@
       title: {
         type: String,
         default: ''
+      },
+      grid: {
+        type: String,
+        default: "1",
       }
     }
   }
