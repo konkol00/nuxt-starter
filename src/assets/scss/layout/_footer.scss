@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+  background: rgba($white-color, .75);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 35px -15px rgba($secondary-dark, .5);
+  overflow: hidden;
+  &__body {
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 1;
+    & a {
+      font-weight: 600;
+      color: $primary-dark;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}

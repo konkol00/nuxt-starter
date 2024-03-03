@@ -31,6 +31,21 @@
         </div>
       </div>
     </Section>
+    <Section anchor="Contact" title="Contact" subtitle="Build amazing web sites." grid="1">
+      <div class="contact__content">
+        <div class="contact__content--title">
+          <h3>{{ contact.title }}</h3>
+        </div>
+        <div class="contact__content--description">
+          <p>{{ contact.description }}</p>
+        </div>
+        <div class="contact__content--buttons">
+          <NuxtLink :to="`mailto:${contact.mail}`" class="btn btn-primary" target="_blank">{{ contact.btnMail }}</NuxtLink>
+          <NuxtLink :to="`tel:${contact.phone}`" class="btn btn-secondary--outline" target="_blank">{{ contact.btnCall }}</NuxtLink>
+        </div>
+      </div>
+    </Section>
+    <Footer />
   </div>
 </template>
 
@@ -85,6 +100,14 @@
             description: 'Built-in error handling and logging to help you debug your application and provide a better user experience.',
           },
         ],
+        contact: {
+          title: 'Get in touch with us to create lightning-fast websites.',
+          description: 'Our team specializes in creating lightning-fast websites that deliver exceptional user experiences. We are dedicated to building web solutions optimized for speed and reliability. Contact us today to discuss how we can help you achieve your website performance goals.',
+          mail: 'contact@kdproject.pl',
+          phone: '+48 123 123 123',
+          btnMail: 'Send Mail',
+          btnCall: 'Call us',
+        }
       }
     }
   }
