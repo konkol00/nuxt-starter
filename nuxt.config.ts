@@ -1,7 +1,9 @@
 export default defineNuxtConfig({
   ssr: true,
   srcDir: 'src/',
-
+  app: {
+    baseURL: '/nuxt-starter/'
+  },
   css: [
     'assets/scss/style.scss',
   ],
@@ -12,9 +14,6 @@ export default defineNuxtConfig({
   ],
   site: {
     url: 'https://konkol00.github.io/',
-  },
-  router: {
-    base: '/nuxt-starter/'
   },
   build: {
     transpile: ['mdi-vue']
