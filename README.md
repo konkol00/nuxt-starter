@@ -14,7 +14,7 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 
 Make sure to install the dependencies:
 
-# npm
+npm
 ```bash
 npm install
 ```
@@ -23,7 +23,7 @@ npm install
 
 Start the development server on `http://localhost:3000`:
 
-# npm
+npm
 ```bash
 npm run dev
 ```
@@ -32,14 +32,14 @@ npm run dev
 
 Build the application for production:
 
-# npm
+npm
 ```bash
 npm run build
 ```
 
 Locally preview production build:
 
-# npm
+npm
 ```bash
 npm run preview
 ```
