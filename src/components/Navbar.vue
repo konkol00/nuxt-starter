@@ -36,15 +36,15 @@
         navigation: [
           {
             name: 'Home',
-            link: '#Header',
+            link: '/#Header',
           },
           {
             name: 'About',
-            link: '#About',
+            link: '/#About',
           },
           {
             name: 'Services',
-            link: '#Services',
+            link: '/#Services',
           },
         ],
       }
