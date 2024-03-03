@@ -11,7 +11,7 @@ $primary-dark: darken($primary-color, 10%);
 $primary-light: lighten($primary-color, 10%);
 
 $secondary-color: #989ca2;
-$secondary-dark: darken($secondary-color, 10%);
+$secondary-dark: darken($secondary-color, 30%);
 $secondary-light: lighten($secondary-color, 10%);
 
 $gray-color: #e8e9e7;
@@ -19,3 +19,4 @@ $gray-dark: darken($gray-color, 10%);
 $gray-light: lighten($gray-color, 10%);
 
 $radial-primary-gradient: radial-gradient(circle, $primary-color 0%, transparent 50%);
+$radial-secondary-gradient: radial-gradient(circle, $secondary-color 0%, transparent 50%);

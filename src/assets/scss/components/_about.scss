@@ -1,7 +1,12 @@
 #About {
+  position: relative;
+  scroll-margin-top: 40px;
+  overflow: hidden;
   .section__body {
+    position: relative;
     align-items: center;
     gap: 3rem;
+    z-index: 2;
   }
   .about__content {
     & h3 {

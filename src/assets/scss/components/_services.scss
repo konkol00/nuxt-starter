@@ -1,0 +1,51 @@
+#Services {
+  position: relative;
+  scroll-margin-top: 40px;
+  background: rgba($secondary-light, .1);
+  .section__body {
+    position: relative;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 2;
+  }
+  .services__card {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    background: $white-color;
+    border: 1px solid rgba($secondary-light, .4);
+    border-radius: .75rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 0 35px -3px rgba($secondary-light, .5);
+    transition: .3s all ease;
+    &:hover {
+      border-color: rgba($primary-color, .35);
+      box-shadow: 0 0 45px -3px rgba($secondary-light, .75);
+      .services__card--icon {
+        box-shadow: 5px 5px 25px rgba($secondary-light, .75);
+      }
+    }
+    &--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 45px;
+      width: 45px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 50%;
+      color: $primary-color;
+      box-shadow: 8px 5px 15px rgba($secondary-light, .5);
+      transition: inherit;
+    }
+    &--title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: $primary-color;
+    }
+    &--description {
+      color: $secondary-dark;
+    }
+  }
+}
