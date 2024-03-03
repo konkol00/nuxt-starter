@@ -46,10 +46,6 @@
             name: 'Services',
             link: '#Services',
           },
-          {
-            name: 'Contact',
-            link: '#Contact',
-          },
         ],
       }
     },
