@@ -4,7 +4,7 @@ Nuxt-Starter is great for kicking off your landing page project quickly. It's a 
 
 ## Live Demo
 
-**SOON**
+**[https://konkol00.github.io/nuxt-starter/]View The Demo Site (Static)**
 
 ## Built with Nuxt 3 Minimal Starter
 
