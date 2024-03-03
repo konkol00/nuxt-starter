@@ -15,7 +15,7 @@
         <p>{{ about.description }}</p>
       </div>
       <div class="about__image">
-        <NuxtImg src="/images/about/about_image.webp" height="800" width="800" loading="lazy" />
+        <NuxtImg src="/images/about/about_image.webp" alt="Section Image" height="800" width="800" loading="lazy" />
       </div>
     </Section>
     <Section anchor="Services" title="Services" subtitle="Compose with everything you need." grid="4">
