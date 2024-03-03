@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-delay-hydration'
   ],
-
-
+  site: {
+    url: 'https://konkol00.github.io/nuxt-starter/',
+  },
   devtools: { enabled: true }
 })
