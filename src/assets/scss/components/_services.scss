@@ -23,6 +23,10 @@
       box-shadow: 0 0 45px -3px rgba($secondary-light, .75);
       .services__card--icon {
         box-shadow: 5px 5px 25px rgba($secondary-light, .75);
+        color: $primary-color;
+      }
+      .services__card--title {
+        color: $primary-color;
       }
     }
     &--icon {
@@ -34,7 +38,7 @@
       padding: 1rem;
       margin-bottom: 1rem;
       border-radius: 50%;
-      color: $primary-color;
+      color: $primary-dark;
       box-shadow: 8px 5px 15px rgba($secondary-light, .5);
       transition: inherit;
     }
@@ -42,7 +46,8 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: $primary-color;
+      color: $primary-dark;
+      transition: inherit;
     }
     &--description {
       color: $secondary-dark;
