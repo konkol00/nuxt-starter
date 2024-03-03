@@ -11,7 +11,10 @@ export default defineNuxtConfig({
     'nuxt-delay-hydration'
   ],
   site: {
-    url: 'https://konkol00.github.io/nuxt-starter/',
+    url: 'https://konkol00.github.io/',
+  },
+  router: {
+    base: '/nuxt-starter/'
   },
   build: {
     transpile: ['mdi-vue']
