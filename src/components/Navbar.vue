@@ -19,7 +19,7 @@
             </ul>
           </div>
           <div class="nav__menu--right">
-            <NuxtLink to="https://github.com/konkol00/nuxt-starter" class="nav__link" target="_blank">Github</NuxtLink>
+            <NuxtLink to="https://github.com/konkol00" class="nav__link" target="_blank">Github</NuxtLink>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@
       </div>
       <div class="header__buttons">
         <NuxtLink to="https://github.com/nuxt/nuxt" class="btn btn-primary" target="_blank">NuxtJs</NuxtLink>
-        <NuxtLink to="https://github.com/konkol00/nuxt-starter" class="btn btn-secondary--outline" target="_blank">View Github</NuxtLink>
+        <NuxtLink to="https://github.com/konkol00/nuxt-starter" class="btn btn-secondary--outline" target="_blank">View Repo</NuxtLink>
       </div>
     </div>   
   </Section>
