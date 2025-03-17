@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   const pageUrl = 'Nuxt-Starter';
   const pageTitle = 'Nuxt-Starter';
   const pageDescription = 'Responsive, fast and modern Nuxt.js starter project';

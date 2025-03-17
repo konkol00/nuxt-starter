@@ -1,3 +1,39 @@
+<script setup lang="ts">
+const active = ref(false);
+
+const navigation = computed(() => [
+  { name: 'Home', link: '/#Header' },
+  { name: 'About', link: '/#About' },
+  { name: 'Services', link: '/#Services' },
+  { name: 'Contact', link: '/#Contact' },
+])
+
+const handleScroll = () => {
+  const navbar = document.getElementById("Navbar")
+  const navClasses = navbar?.classList
+  if (navbar && navClasses) {
+    if(document.documentElement.scrollTop > 50) {
+      if (navClasses.contains("active") === false) {
+        navClasses.toggle("active");
+      }
+    }
+    else {
+      (navClasses.contains("active") === true) 
+      navClasses.toggle("active"); 
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", function(){
+    handleScroll();
+  })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+</script>
 <template>
   <div id="Navbar">
     <nav class="nav">
@@ -26,48 +62,3 @@
     </nav>
   </div>
 </template>
-
-<script>
-  export default {
-    name: 'Navbar',
-    data() {
-      return {
-        active: false,
-        navigation: [
-          {
-            name: 'Home',
-            link: '/#Header',
-          },
-          {
-            name: 'About',
-            link: '/#About',
-          },
-          {
-            name: 'Services',
-            link: '/#Services',
-          },
-          {
-            name: 'Contact',
-            link: '/#Contact',
-          },
-        ],
-      }
-    },
-    mounted() {
-      this.$nextTick(function(){
-        window.addEventListener("scroll", function(){
-          const navbar = document.getElementById("Navbar")
-          const navclasses = navbar.classList
-          if(document.documentElement.scrollTop > 50) {
-            if (navclasses.contains("active") === false) {
-              navclasses.toggle("active");
-            }
-          }
-          else if
-            (navclasses.contains("active") === true) 
-            navclasses.toggle("active"); 
-        })
-      })
-    },
-  }
-</script>

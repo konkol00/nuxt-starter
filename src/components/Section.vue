@@ -1,4 +1,11 @@
-
+<script setup lang="ts">
+const props = defineProps({
+  anchor: String,
+  subtitle: String,
+  title: String,
+  grid: { type: String, default: "1" }
+})
+</script>
 <template>
   <section class="section" :id="anchor">
     <div class="container">
@@ -12,27 +19,3 @@
     </div>
   </section>
 </template>
-
-<script>
-  export default {
-    name: 'Section',
-    props: {
-      anchor: {
-        type: String,
-        default: ''
-      },
-      subtitle: {
-        type: String,
-        default: ''
-      },
-      title: {
-        type: String,
-        default: ''
-      },
-      grid: {
-        type: String,
-        default: "1",
-      }
-    }
-  }
-</script>
