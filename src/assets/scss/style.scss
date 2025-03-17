@@ -1,21 +1,18 @@
-// Abstracts 
-@import 'abstracts/variables';
-
 // Base
-@import 'base/reset';
-@import 'base/font';
+@use 'base/reset';
+@use 'base/font';
 
 // Utilities
-@import 'utilities/container';
+@use 'utilities/container';
 
 // Components
-@import 'components/buttons';
-@import 'components/header';
-@import 'components/about';
-@import 'components/services';
-@import 'components/contact';
+@use 'components/buttons';
+@use 'components/header';
+@use 'components/about';
+@use 'components/services';
+@use 'components/contact';
 
 // Layout
-@import 'layout/section';
-@import 'layout/navbar';
-@import 'layout/footer';
+@use 'layout/section';
+@use 'layout/navbar';
+@use 'layout/footer';

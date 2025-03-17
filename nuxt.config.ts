@@ -1,3 +1,5 @@
+import { generateRobotsTxt } from "@nuxtjs/robots/util";
+
 export default defineNuxtConfig({
   ssr: true,
   srcDir: 'src/',
@@ -19,6 +21,8 @@ export default defineNuxtConfig({
   site: {
     url: 'https://konkol00.github.io/',
   },
+
+  robots: { robotsTxt: false },
 
   build: {
     transpile: ['mdi-vue']
