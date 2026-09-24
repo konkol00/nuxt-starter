@@ -16,6 +16,12 @@
   transition: transform .25s $ease, box-shadow .25s $ease, background-color .2s ease, border-color .2s ease, color .2s ease;
 
   &:hover { transform: translateY(-2px); }
+
+  &:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+  }
   &:active { transform: translateY(0); }
 
   &-sm {

@@ -7,6 +7,7 @@ const navigation = [
   { name: 'About', link: '/#About' },
   { name: 'Features', link: '/#Services' },
   { name: 'Contact', link: '/#Contact' },
+  { name: 'Components', link: '/components' },
 ]
 
 const onScroll = () => {

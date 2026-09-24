@@ -1,0 +1,62 @@
+@use '../abstracts/variables' as *;
+
+.page-header {
+  padding: 9rem 0 2rem;
+  text-align: center;
+
+  h1 { margin: .75rem 0 1rem; }
+
+  &__text {
+    max-width: 58ch;
+    margin: 0 auto;
+    font-size: 1.1875rem;
+    color: var(--c-muted);
+  }
+}
+
+.demo {
+  &__info {
+    align-self: start;
+    p { color: var(--c-muted); font-size: 1.0625rem; }
+  }
+
+  &__list {
+    display: grid;
+    gap: .5rem;
+    margin: 1.25rem 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+    color: var(--c-muted);
+
+    li::marker { color: var(--c-primary); }
+  }
+
+  &__panel {
+    padding: clamp(1.25rem, 4vw, 2.25rem);
+    border: 1px solid var(--c-border);
+    border-radius: $radius-lg;
+    background: var(--c-surface);
+    box-shadow: var(--shadow);
+  }
+
+  &__source {
+    margin-top: 1rem;
+    font-size: .9375rem;
+    color: var(--c-muted);
+  }
+}
+
+.components-page {
+  code {
+    padding: .1em .35em;
+    border-radius: 4px;
+    background: var(--c-bg-soft);
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: .875em;
+  }
+
+  pre code { padding: 0; background: none; }
+
+  #Form .section__body { gap: 3rem; align-items: start; }
+  #Accordion, #Dialog { background: var(--c-bg-soft); border-block: 1px solid var(--c-border); }
+}

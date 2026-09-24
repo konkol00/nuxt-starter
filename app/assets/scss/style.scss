@@ -12,8 +12,11 @@
 @use 'components/about';
 @use 'components/services';
 @use 'components/contact';
+@use 'components/forms';
+@use 'components/ui';
 
 // Layout
 @use 'layout/section';
 @use 'layout/navbar';
 @use 'layout/footer';
+@use 'layout/page';

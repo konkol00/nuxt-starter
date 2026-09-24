@@ -19,6 +19,19 @@ public/       # static files (fonts, images, favicon)
 
 Requires Node.js 20.19+.
 
+## Components for learning
+
+The [`/components`](https://konkol00.github.io/nuxt-starter/components) page shows reusable building blocks, each in a small, commented file:
+
+| Component | Built with | File |
+| --- | --- | --- |
+| Contact form with validation | [VeeValidate](https://vee-validate.logaretm.com/) + [Zod](https://zod.dev/) | `app/components/ContactForm.vue` |
+| Input, Textarea, Select | VeeValidate `useField` | `app/components/form/` |
+| Checkbox, Radio group, Switch | [Reka UI](https://reka-ui.com/) + VeeValidate | `app/components/form/` |
+| Accordion, Tabs, Dialog | Reka UI | `app/components/ui/` |
+
+Reka UI is a *headless* library: it takes care of keyboard support, focus and ARIA attributes, while all styles live in the project's SCSS (`app/assets/scss/components/_forms.scss`, `_ui.scss`).
+
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
