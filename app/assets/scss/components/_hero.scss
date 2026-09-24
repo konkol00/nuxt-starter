@@ -4,8 +4,12 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 100svh;
-  padding: 8rem 0 5rem;
+  padding: 7rem 0 3.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    min-height: 100svh;
+    padding: 8rem 0 5rem;
+  }
   isolation: isolate;
   overflow: hidden;
 
@@ -90,7 +94,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1px;
-    margin-top: 4.5rem;
+    margin-top: 3rem;
+
+    @media (min-width: $breakpoint-md) { margin-top: 4.5rem; }
     width: min(100%, 760px);
     border: 1px solid var(--c-border);
     border-radius: $radius-lg;

@@ -1,7 +1,9 @@
 @use '../abstracts/variables' as *;
 
 .page-header {
-  padding: 9rem 0 2rem;
+  padding: 7rem 0 0;
+
+  @media (min-width: $breakpoint-md) { padding-top: 9rem; }
   text-align: center;
 
   h1 { margin: .75rem 0 1rem; }
@@ -57,6 +59,8 @@
 
   pre code { padding: 0; background: none; }
 
-  #Form .section__body { gap: 3rem; align-items: start; }
+  #Form .section__body { gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+  #Dialog .section__body { text-align: center; }
+
   #Accordion, #Dialog { background: var(--c-bg-soft); border-block: 1px solid var(--c-border); }
 }
