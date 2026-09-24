@@ -26,7 +26,9 @@ The [`/components`](https://konkol00.github.io/nuxt-starter/components) page sho
 | Component | Built with | File |
 | --- | --- | --- |
 | Contact form with validation | [VeeValidate](https://vee-validate.logaretm.com/) + [Zod](https://zod.dev/) | `app/components/ContactForm.vue` |
-| Input, Textarea, Select | VeeValidate `useField` | `app/components/form/` |
+| Input (with optional debounced validation), Textarea | VeeValidate `useField`, [lodash-es](https://lodash.com/docs/#debounce) | `app/components/form/` |
+| Custom Select (dropdown) | Reka UI + VeeValidate | `app/components/form/FormSelect.vue` |
+| Debounced live search | lodash-es `debounce` | `app/components/DebouncedSearch.vue` |
 | Checkbox, Radio group, Switch | [Reka UI](https://reka-ui.com/) + VeeValidate | `app/components/form/` |
 | Accordion, Tabs, Dialog | Reka UI | `app/components/ui/` |
 

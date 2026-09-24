@@ -59,8 +59,9 @@
 
   pre code { padding: 0; background: none; }
 
-  #Form .section__body { gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+  #Form .section__body,
+  #Search .section__body { gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
   #Dialog .section__body { text-align: center; }
 
-  #Accordion, #Dialog { background: var(--c-bg-soft); border-block: 1px solid var(--c-border); }
+  #Search, #Tabs { background: var(--c-bg-soft); border-block: 1px solid var(--c-border); }
 }

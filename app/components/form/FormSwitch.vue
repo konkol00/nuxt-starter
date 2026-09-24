@@ -19,7 +19,7 @@ const { value, handleChange } = useField<boolean>(() => props.name, undefined, {
 </script>
 
 <template>
-  <div class="field">
+  <FormField :id="id" :hint="hint">
     <div class="choice">
       <SwitchRoot
         :id="id"
@@ -32,6 +32,5 @@ const { value, handleChange } = useField<boolean>(() => props.name, undefined, {
       </SwitchRoot>
       <label :for="id" class="choice__label">{{ label }}</label>
     </div>
-    <p v-if="hint" :id="`${id}-hint`" class="field__hint">{{ hint }}</p>
-  </div>
+  </FormField>
 </template>

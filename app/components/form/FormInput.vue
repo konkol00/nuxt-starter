@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { debounce } from 'lodash-es'
 import { useField } from 'vee-validate'
 
 /**
  * Text input connected to the parent form by `name`.
- * Usage: <FormInput name="email" label="Email" type="email" />
+ * Usage: <FormInput name="email" label="Email" type="email" :debounce="500" />
  */
 const props = withDefaults(defineProps<{
   name: string
@@ -13,16 +14,47 @@ const props = withDefaults(defineProps<{
   hint?: string
   required?: boolean
   autocomplete?: string
+  /**
+   * Validate while typing, but only after the user pauses for this many ms.
+   * Without it the field validates on blur (and live once an error is shown).
+   */
+  debounce?: number
 }>(), { type: 'text' })
 
 const id = useId()
 
 // `useField` registers this input in the closest `useForm()` and gives us its
-// value, error and event handlers. Validation runs on blur first, and on every
-// keystroke once an error is visible ("lazy, then eager").
-const { value, errorMessage, handleBlur, handleChange } = useField<string>(() => props.name, undefined, {
+// value, error, validation state and event handlers.
+const { value, errorMessage, meta, handleBlur, handleChange, validate } = useField<string>(() => props.name, undefined, {
   validateOnValueUpdate: false,
 })
+
+// debounce() returns a new function that waits until it has not been called
+// for `wait` ms and only then runs. Typing "hello" quickly = 1 validation, not 5.
+const debouncedValidate = debounce(() => validate(), props.debounce ?? 0)
+
+function onInput(event: Event) {
+  if (props.debounce) {
+    handleChange(event, false) // update the value now, validate later
+    debouncedValidate()
+  }
+  else {
+    handleChange(event, !!errorMessage.value)
+  }
+}
+
+function onBlur(event: Event) {
+  debouncedValidate.cancel() // leaving the field validates right away
+  handleBlur(event, true)
+}
+
+// a pending timer must not fire after the component is gone
+onBeforeUnmount(() => debouncedValidate.cancel())
+
+// green border once a debounced field has been checked and is valid
+const isValid = computed(() => !!props.debounce && meta.validated && meta.valid && !!value.value)
+
+const describedBy = computed(() => errorMessage.value ? `${id}-error` : props.hint ? `${id}-hint` : undefined)
 </script>
 
 <template>
@@ -35,10 +67,11 @@ const { value, errorMessage, handleBlur, handleChange } = useField<string>(() =>
       :placeholder="placeholder"
       :autocomplete="autocomplete"
       :aria-invalid="!!errorMessage"
-      :aria-describedby="errorMessage ? `${id}-error` : hint ? `${id}-hint` : undefined"
+      :aria-describedby="describedBy"
       class="input"
-      @input="handleChange($event, !!errorMessage)"
-      @blur="handleBlur($event, true)"
+      :class="{ 'input--valid': isValid }"
+      @input="onInput"
+      @blur="onBlur"
     >
   </FormField>
 </template>

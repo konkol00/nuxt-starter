@@ -33,28 +33,11 @@
     pointer-events: none;
     mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
 
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      width: min(720px, 90vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: .28;
-      animation: float 14s $ease infinite alternate;
-    }
-    &::before {
-      top: -10%;
-      left: -10%;
-      background: var(--c-primary);
-    }
-    &::after {
-      bottom: -20%;
-      right: -10%;
-      background: var(--c-accent);
-      animation-delay: -7s;
-    }
+    // Soft colour spots made with gradients: no blur filter and no
+    // animation, so the browser paints them once.
+    background:
+      radial-gradient(40rem 40rem at 5% 10%, color-mix(in srgb, var(--c-primary) 22%, transparent), transparent 70%),
+      radial-gradient(40rem 40rem at 95% 90%, color-mix(in srgb, var(--c-accent) 24%, transparent), transparent 70%);
   }
 
   &__content {
@@ -112,7 +95,6 @@
       flex-direction: column;
       padding: 1.25rem 1rem;
       background: var(--c-glass);
-      backdrop-filter: blur(8px);
     }
     strong {
       font-size: 1.5rem;
@@ -124,9 +106,4 @@
       color: var(--c-muted);
     }
   }
-}
-
-@keyframes float {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to { transform: translate3d(6%, 8%, 0) scale(1.1); }
 }

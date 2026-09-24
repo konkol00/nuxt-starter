@@ -4,31 +4,35 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 1030;
-  padding: 1.25rem 0;
-  transition: padding .3s $ease;
+  padding: .75rem clamp(.5rem, 2vw, 1rem);
 
   &__inner {
+    position: relative;
+    isolation: isolate;
     display: flex;
     align-items: center;
     gap: 1.5rem;
     padding-block: .625rem;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
-  }
 
-  &--scrolled {
-    padding: .75rem 0;
-
-    .nav__inner {
-      max-width: calc(1200px - 2rem);
-      width: calc(100% - 2rem);
+    // The "glass" background lives on a pseudo-element and only its opacity
+    // is animated. Animating size, padding or backdrop-filter itself would
+    // force layout/repaint on every frame and makes scrolling stutter.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border: 1px solid var(--c-border);
+      border-radius: 999px;
       background: var(--c-glass);
-      border-color: var(--c-border);
       box-shadow: var(--shadow);
-      backdrop-filter: saturate(180%) blur(14px);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      transition: opacity .25s ease;
     }
   }
+
+  &--scrolled .nav__inner::before { opacity: 1; }
 
   &__brand {
     display: inline-flex;
@@ -132,8 +136,6 @@
     &--open {
       .nav__collapse { transform: none; visibility: visible; }
       .nav__backdrop { opacity: 1; pointer-events: auto; }
-      // backdrop-filter would turn the inner bar into the drawer's containing block
-      .nav__inner { backdrop-filter: none; }
       .nav__toggler span {
         &:nth-child(1) { transform: translateY(6px) rotate(45deg); }
         &:nth-child(2) { opacity: 0; }

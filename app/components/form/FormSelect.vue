@@ -1,9 +1,23 @@
 <script setup lang="ts">
+import {
+  SelectContent,
+  SelectIcon,
+  SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectPortal,
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport,
+} from 'reka-ui'
 import { useField } from 'vee-validate'
+import { mdiCheck, mdiChevronDown } from '@mdi/js'
 
 /**
- * A native <select>. It is accessible and works well on mobile out of the box,
- * so it is usually the right default before reaching for a custom dropdown.
+ * Custom dropdown built on Reka UI's Select.
+ * Reka gives us keyboard navigation (arrows, Home/End, type-ahead),
+ * focus management and ARIA roles – we only write the markup and styles.
  */
 const props = defineProps<{
   name: string
@@ -15,27 +29,41 @@ const props = defineProps<{
 }>()
 
 const id = useId()
-const { value, errorMessage, handleBlur, handleChange } = useField<string>(() => props.name)
+const { value, errorMessage, handleBlur, handleChange } = useField<string | undefined>(() => props.name)
+
+// closing the dropdown counts as "leaving the field"
+function onOpenChange(open: boolean) {
+  if (!open) handleBlur(undefined, true)
+}
 </script>
 
 <template>
   <FormField :id="id" :label="label" :hint="hint" :error="errorMessage" :required="required">
-    <div class="select">
-      <select
+    <SelectRoot :model-value="value" :name="name" @update:model-value="handleChange" @update:open="onOpenChange">
+      <SelectTrigger
         :id="id"
-        :name="name"
-        :value="value ?? ''"
+        class="input select__trigger"
         :aria-invalid="!!errorMessage"
         :aria-describedby="errorMessage ? `${id}-error` : hint ? `${id}-hint` : undefined"
-        class="input"
-        @change="handleChange"
-        @blur="handleBlur($event, true)"
       >
-        <option value="" disabled>{{ placeholder ?? 'Choose…' }}</option>
-        <option v-for="option in options" :key="option.value" :value="option.value">
-          {{ option.label }}
-        </option>
-      </select>
-    </div>
+        <SelectValue :placeholder="placeholder ?? 'Choose…'" class="select__value" />
+        <SelectIcon class="select__icon">
+          <AppIcon :path="mdiChevronDown" :size="20" />
+        </SelectIcon>
+      </SelectTrigger>
+
+      <SelectPortal>
+        <SelectContent position="popper" :side-offset="6" class="select__content">
+          <SelectViewport class="select__viewport">
+            <SelectItem v-for="option in options" :key="option.value" :value="option.value" class="select__item">
+              <SelectItemText>{{ option.label }}</SelectItemText>
+              <SelectItemIndicator class="select__check">
+                <AppIcon :path="mdiCheck" :size="18" />
+              </SelectItemIndicator>
+            </SelectItem>
+          </SelectViewport>
+        </SelectContent>
+      </SelectPortal>
+    </SelectRoot>
   </FormField>
 </template>

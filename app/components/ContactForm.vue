@@ -59,7 +59,16 @@ const onSubmit = handleSubmit(async (values) => {
   <form class="form" novalidate @submit="onSubmit">
     <div class="form__row">
       <FormInput name="name" label="Name" autocomplete="name" placeholder="Jane Doe" required />
-      <FormInput name="email" label="Email" type="email" autocomplete="email" placeholder="jane@example.com" required />
+      <FormInput
+        name="email"
+        label="Email"
+        type="email"
+        autocomplete="email"
+        placeholder="jane@example.com"
+        hint="Checked while you type"
+        :debounce="500"
+        required
+      />
     </div>
 
     <FormSelect name="topic" label="Topic" :options="topics" placeholder="What is it about?" required />

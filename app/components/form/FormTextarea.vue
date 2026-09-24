@@ -32,6 +32,8 @@ const { value, errorMessage, handleBlur, handleChange } = useField<string>(() =>
       @input="handleChange($event, !!errorMessage)"
       @blur="handleBlur($event, true)"
     />
-    <p v-if="maxlength" class="field__counter">{{ value?.length ?? 0 }} / {{ maxlength }}</p>
+    <template v-if="maxlength" #aside>
+      <span class="field__counter" aria-live="polite">{{ value?.length ?? 0 }} / {{ maxlength }}</span>
+    </template>
   </FormField>
 </template>

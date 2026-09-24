@@ -7,7 +7,7 @@ useSeoMeta({
 const faq = [
   { title: 'Why Reka UI and not a full UI kit?', content: 'Reka UI is headless: it ships behaviour and accessibility (keyboard support, focus management, ARIA) but no styles. You keep full control of the look with your own SCSS, and you learn how the components actually work.' },
   { title: 'Why VeeValidate and Zod?', content: 'VeeValidate keeps track of values, errors and touched state of every field. Zod describes what valid data looks like. Together they give you typed form data with very little code.' },
-  { title: 'Can I use these components in my own project?', content: 'Yes. Copy the files from app/components/form and app/components/ui, install reka-ui, vee-validate, @vee-validate/zod and zod, and add the SCSS partials.' },
+  { title: 'Can I use these components in my own project?', content: 'Yes. Copy the files from app/components/form and app/components/ui, install reka-ui, vee-validate, @vee-validate/zod, zod and lodash-es, and add the SCSS partials.' },
   { title: 'Where does the form send the data?', content: 'Nowhere – this demo is a static site. Look at the comment in ContactForm.vue to see where to add a $fetch call to your API or a form service.' },
 ]
 
@@ -17,7 +17,7 @@ const packageManagers = [
   { label: 'yarn', value: 'yarn' },
 ]
 
-const deps = 'reka-ui vee-validate @vee-validate/zod zod'
+const deps = 'reka-ui vee-validate @vee-validate/zod zod lodash-es'
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const deps = 'reka-ui vee-validate @vee-validate/zod zod'
         <p class="hero__meta">Learning kit</p>
         <h1>Components</h1>
         <p class="page-header__text">
-          Form controls and interactive widgets you will need on almost every site.
+          Form controls, validation, debounce and interactive widgets you will need on almost every site.
           Each one is a small, commented Vue file you can read and copy.
         </p>
       </div>
@@ -41,6 +41,9 @@ const deps = 'reka-ui vee-validate @vee-validate/zod zod'
         </p>
         <ul class="demo__list">
           <li>Errors show after you leave a field, then update as you type.</li>
+          <li>The email field validates while you type, debounced by 500&nbsp;ms.</li>
+          <li>Each field keeps one line for its message, so errors never push the form around.</li>
+          <li>Topic is a custom dropdown (Reka UI Select) with full keyboard support.</li>
           <li>Labels, <code>aria-invalid</code> and <code>aria-describedby</code> are wired for screen readers.</li>
           <li>Checkbox, radio and switch use Reka UI for keyboard support.</li>
         </ul>
@@ -50,6 +53,24 @@ const deps = 'reka-ui vee-validate @vee-validate/zod zod'
       </div>
       <div class="demo__panel">
         <ContactForm />
+      </div>
+    </AppSection>
+
+    <AppSection anchor="Search" title="Debounced search" subtitle="lodash-es" :grid="2">
+      <div class="demo__info">
+        <p>
+          <strong>Debounce</strong> delays a function until the user stops triggering it.
+          Type quickly and compare the two counters: many keystrokes, one search.
+        </p>
+        <ul class="demo__list">
+          <li>Use it for search boxes, autocomplete and live validation.</li>
+          <li>Always call <code>.cancel()</code> when the component unmounts.</li>
+          <li>Need “at most once every X ms” instead? That is <code>throttle</code>.</li>
+        </ul>
+        <p class="demo__source">Source: <code>app/components/DebouncedSearch.vue</code></p>
+      </div>
+      <div class="demo__panel">
+        <DebouncedSearch />
       </div>
     </AppSection>
 

@@ -2,11 +2,12 @@
 
 .form {
   display: grid;
-  gap: 1.25rem;
+  // fields already reserve a line for their message, so the gap can be small
+  gap: .25rem;
 
   &__row {
     display: grid;
-    gap: 1.25rem;
+    gap: .25rem 1.25rem;
     @media (min-width: $breakpoint-md) { grid-template-columns: 1fr 1fr; }
   }
 
@@ -14,7 +15,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: .75rem;
-    padding-top: .5rem;
+    padding-top: .75rem;
   }
 }
 
@@ -30,19 +31,42 @@
 
   &__required { color: var(--c-primary); }
 
-  &__hint,
-  &__counter {
+  // Always rendered, one line tall: showing an error never moves the layout.
+  &__message {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 1.75rem;
+    padding-top: .125rem;
     font-size: .9375rem;
-    color: var(--c-muted);
+    line-height: 1.4;
   }
 
-  &__counter { justify-self: end; }
+  &__hint { color: var(--c-muted); }
 
   &__error {
-    font-size: .9375rem;
     font-weight: 500;
     color: var(--c-primary);
   }
+
+  &__counter {
+    margin-left: auto;
+    color: var(--c-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+}
+
+.field-message-enter-active,
+.field-message-leave-active {
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+.field-message-enter-from,
+.field-message-leave-to {
+  opacity: 0;
+  transform: translateY(-3px);
 }
 
 .fieldset {
@@ -50,7 +74,9 @@
   padding: 0;
   border: 0;
 
-  legend { margin-bottom: .375rem; padding: 0; }
+  min-inline-size: 0;
+
+  legend { margin-bottom: .5rem; padding: 0; }
 }
 
 .input {
@@ -79,34 +105,87 @@
     border-color: var(--c-primary);
   }
 
+  &--valid:not(:focus) {
+    border-color: #1f9d63;
+  }
+
   &--textarea {
     resize: vertical;
     min-height: 8rem;
   }
 }
 
-// native select with a custom arrow
+// custom select (Reka UI)
 .select {
-  position: relative;
-
-  select {
-    appearance: none;
-    padding-right: 2.75rem;
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    text-align: left;
     cursor: pointer;
+
+    &[data-placeholder] .select__value {
+      color: color-mix(in srgb, var(--c-muted) 70%, transparent);
+    }
+
+    &[data-state='open'] {
+      border-color: var(--c-primary);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-primary) 15%, transparent);
+    }
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    right: 1.125rem;
-    top: 50%;
-    width: .5rem;
-    height: .5rem;
-    border-right: 2px solid var(--c-muted);
-    border-bottom: 2px solid var(--c-muted);
-    transform: translateY(-70%) rotate(45deg);
-    pointer-events: none;
+  &__icon {
+    display: flex;
+    color: var(--c-muted);
+    transition: transform .2s $ease;
+
+    [data-state='open'] > & { transform: rotate(180deg); }
   }
+
+  &__content {
+    z-index: 1200;
+    width: var(--reka-select-trigger-width);
+    max-height: min(var(--reka-select-content-available-height), 20rem);
+    overflow: hidden;
+    border: 1px solid var(--c-border);
+    border-radius: $radius-sm;
+    background: var(--c-surface);
+    box-shadow: var(--shadow);
+    transform-origin: var(--reka-select-content-transform-origin);
+    animation: select-in .15s $ease;
+  }
+
+  &__viewport { padding: .375rem; }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: .625rem .75rem;
+    border-radius: calc(#{$radius-sm} - .25rem);
+    color: var(--c-text);
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+
+    &[data-highlighted] {
+      background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+      color: var(--c-primary);
+    }
+
+    &[data-state='checked'] { font-weight: 600; }
+  }
+
+  &__check {
+    display: flex;
+    color: var(--c-primary);
+  }
+}
+
+@keyframes select-in {
+  from { opacity: 0; transform: scale(.97) translateY(-4px); }
 }
 
 // checkbox / radio / switch + their label
@@ -118,6 +197,7 @@
   &__label {
     cursor: pointer;
     user-select: none;
+    line-height: 1.4;
   }
 }
 
@@ -189,4 +269,69 @@
 
     &[data-state='checked'] { transform: translateX(1.4375rem); }
   }
+}
+
+// debounced search demo
+.search {
+  display: grid;
+  gap: .5rem;
+
+  &__box { position: relative; }
+
+  &__icon {
+    position: absolute;
+    left: .875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--c-muted);
+    pointer-events: none;
+  }
+
+  &__input {
+    padding-left: 2.75rem;
+
+    // hide the browser's own clear button, it does not match the design
+    &::-webkit-search-cancel-button { appearance: none; }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    margin: .5rem 0;
+
+    div {
+      padding: .625rem .75rem;
+      border-radius: $radius-sm;
+      background: var(--c-bg-soft);
+    }
+    dt { font-size: .8125rem; color: var(--c-muted); }
+    dd {
+      margin: 0;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  &__results {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: .5rem;
+    min-height: 7.5rem;
+    transition: opacity .15s ease;
+
+    &.is-pending { opacity: .5; }
+
+    li code {
+      display: inline-block;
+      padding: .25rem .625rem;
+      border: 1px solid var(--c-border);
+      border-radius: 999px;
+      background: var(--c-surface);
+      font-size: .875rem;
+    }
+  }
+
+  &__empty { color: var(--c-muted); }
 }

@@ -10,6 +10,7 @@ const props = defineProps<{
   name: string
   label: string
   options: { label: string, value: string }[]
+  hint?: string
   required?: boolean
 }>()
 
@@ -18,24 +19,24 @@ const { value, errorMessage, handleChange } = useField<string>(() => props.name)
 </script>
 
 <template>
-  <fieldset class="field fieldset" :class="{ 'field--invalid': errorMessage }">
-    <legend class="field__label">
-      {{ label }}
-      <span v-if="required" class="field__required" aria-hidden="true">*</span>
-    </legend>
+  <FormField :id="id" :label="label" :hint="hint" :error="errorMessage" :required="required" group>
     <RadioGroupRoot
       :model-value="value"
-      :aria-describedby="errorMessage ? `${id}-error` : undefined"
+      :aria-describedby="errorMessage ? `${id}-error` : hint ? `${id}-hint` : undefined"
       class="radio-group"
       @update:model-value="handleChange"
     >
       <div v-for="option in options" :key="option.value" class="choice">
-        <RadioGroupItem :id="`${id}-${option.value}`" :value="option.value" class="radio">
+        <RadioGroupItem
+          :id="`${id}-${option.value}`"
+          :value="option.value"
+          :aria-invalid="!!errorMessage"
+          class="radio"
+        >
           <RadioGroupIndicator class="radio__indicator" />
         </RadioGroupItem>
         <label :for="`${id}-${option.value}`" class="choice__label">{{ option.label }}</label>
       </div>
     </RadioGroupRoot>
-    <p v-if="errorMessage" :id="`${id}-error`" class="field__error" role="alert">{{ errorMessage }}</p>
-  </fieldset>
+  </FormField>
 </template>

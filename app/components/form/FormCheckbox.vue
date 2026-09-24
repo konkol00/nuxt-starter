@@ -10,6 +10,7 @@ import { mdiCheck } from '@mdi/js'
 const props = defineProps<{
   name: string
   label: string
+  hint?: string
 }>()
 
 const id = useId()
@@ -19,13 +20,13 @@ const { value, errorMessage, handleChange } = useField<boolean>(() => props.name
 </script>
 
 <template>
-  <div class="field" :class="{ 'field--invalid': errorMessage }">
+  <FormField :id="id" :hint="hint" :error="errorMessage">
     <div class="choice">
       <CheckboxRoot
         :id="id"
         :model-value="value"
         :aria-invalid="!!errorMessage"
-        :aria-describedby="errorMessage ? `${id}-error` : undefined"
+        :aria-describedby="errorMessage ? `${id}-error` : hint ? `${id}-hint` : undefined"
         class="checkbox"
         @update:model-value="handleChange"
       >
@@ -33,8 +34,7 @@ const { value, errorMessage, handleChange } = useField<boolean>(() => props.name
           <AppIcon :path="mdiCheck" :size="16" />
         </CheckboxIndicator>
       </CheckboxRoot>
-      <label :for="id" class="choice__label"><slot>{{ label }}</slot></label>
+      <label :for="id" class="choice__label">{{ label }}</label>
     </div>
-    <p v-if="errorMessage" :id="`${id}-error`" class="field__error" role="alert">{{ errorMessage }}</p>
-  </div>
+  </FormField>
 </template>
