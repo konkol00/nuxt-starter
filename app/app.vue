@@ -8,7 +8,7 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogType: 'website',
-  ogImage: 'https://konkol00.github.io/nuxt-starter/images/about/about_image.webp',
+  ogImage: 'https://konkol00.github.io/nuxt-starter/images/og-image.png',
   twitterCard: 'summary_large_image',
 })
 </script>

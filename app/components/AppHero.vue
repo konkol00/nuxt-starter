@@ -11,7 +11,7 @@ const highlights = [
   <section id="Hero" class="hero">
     <div class="hero__glow" aria-hidden="true" />
     <div class="container hero__content">
-      <span class="badge"><span class="badge__dot" /> Now running on Nuxt 4</span>
+      <p class="hero__meta">Version 3 · Nuxt 4 · MIT license</p>
       <h1 class="hero__title">
         Build <span class="text-gradient">amazing</span> web experiences
       </h1>

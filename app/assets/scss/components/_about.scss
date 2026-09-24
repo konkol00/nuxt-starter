@@ -28,31 +28,75 @@
     }
     svg { flex-shrink: 0; color: var(--c-primary); }
   }
+}
 
-  .about__image {
+.structure {
+  margin: 0;
+
+  &__panel {
     position: relative;
-    padding: .5rem;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
     border: 1px solid var(--c-border);
-    border-radius: calc(#{$radius-lg} + .5rem);
+    border-radius: $radius-lg;
     background: var(--c-surface);
     box-shadow: var(--shadow);
+    overflow: hidden;
 
-    &::before {
+    // Nuxt-like peak in the corner
+    &::after {
       content: '';
       position: absolute;
-      inset: 12% -6% -6% 12%;
-      z-index: -1;
-      border-radius: $radius-lg;
-      background: var(--c-gradient);
-      filter: blur(50px);
-      opacity: .35;
+      right: -2rem;
+      bottom: -1px;
+      width: 11rem;
+      aspect-ratio: 1.15;
+      background: var(--c-primary);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      opacity: .12;
+    }
+  }
+
+  &__tree {
+    position: relative;
+    z-index: 1;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: clamp(.875rem, .3vw + .8rem, 1rem);
+    line-height: 1;
+
+    li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: .625rem 0 .625rem calc(var(--depth) * 1.5rem);
+      border-bottom: 1px dashed var(--c-border);
+
+      &:last-child { border-bottom: 0; }
     }
 
-    img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: $radius-lg;
+    .is-dir .structure__name { font-weight: 600; }
+
+    .is-app {
+      box-shadow: inset 3px 0 0 var(--c-primary);
+      padding-left: calc(var(--depth) * 1.5rem + .75rem);
+      margin-left: 0;
     }
+  }
+
+  &__note {
+    margin-left: auto;
+    font-family: $font;
+    font-size: .875rem;
+    color: var(--c-muted);
+    white-space: nowrap;
+
+    .is-app & { color: var(--c-primary); font-weight: 600; }
+  }
+
+  figcaption {
+    margin-top: .75rem;
+    font-size: .9375rem;
+    color: var(--c-muted);
+
+    code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: .875em; }
   }
 }

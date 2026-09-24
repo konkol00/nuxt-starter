@@ -60,17 +60,7 @@ const contact = {
           </li>
         </ul>
       </div>
-      <div class="about__image">
-        <NuxtImg
-          src="/images/about/about_image.webp"
-          alt="Laptop with code on a desk"
-          width="560"
-          height="560"
-          densities="x1 x2"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
+      <AppStructure />
     </AppSection>
 
     <AppSection anchor="Services" title="Everything you need" subtitle="Features" :grid="4">
