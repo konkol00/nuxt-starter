@@ -1,0 +1,40 @@
+@use '../abstracts/variables' as *;
+
+:root {
+  color-scheme: light dark;
+
+  --c-primary: #{$primary-color};
+  --c-primary-strong: #c1261b;
+  --c-accent: #{$accent-color};
+  --c-gradient: linear-gradient(120deg, var(--c-primary) 0%, var(--c-accent) 100%);
+
+  --c-bg: #fbfaf9;
+  --c-bg-soft: #f3f1ef;
+  --c-surface: #ffffff;
+  --c-text: #17130f;
+  --c-muted: #5f5a55;
+  --c-border: rgba(23, 19, 15, .09);
+  --c-glass: rgba(255, 255, 255, .72);
+
+  --shadow-sm: 0 1px 2px rgba(23, 19, 15, .06), 0 2px 8px rgba(23, 19, 15, .04);
+  --shadow: 0 10px 30px -12px rgba(23, 19, 15, .18);
+  --shadow-primary: 0 12px 30px -10px rgba(225, 52, 40, .55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-primary: #ff5a4e;
+    --c-primary-strong: #e13428;
+
+    --c-bg: #0e0c0b;
+    --c-bg-soft: #151210;
+    --c-surface: #1a1715;
+    --c-text: #f4f1ee;
+    --c-muted: #a39d97;
+    --c-border: rgba(255, 255, 255, .08);
+    --c-glass: rgba(14, 12, 11, .7);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+    --shadow: 0 16px 40px -16px rgba(0, 0, 0, .7);
+  }
+}

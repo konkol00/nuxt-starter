@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as *;
+
+.cta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(3rem, 7vw, 5.5rem) clamp(1.25rem, 5vw, 4rem);
+  border-radius: calc(#{$radius-lg} * 1.5);
+  background: linear-gradient(135deg, #b8231a 0%, $primary-color 45%, $accent-color 100%);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 30px 60px -25px rgba(225, 52, 40, .6);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(rgba(255, 255, 255, .18) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse at top, #000 20%, transparent 75%);
+  }
+
+  &__title {
+    max-width: 22ch;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    max-width: 60ch;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, .85);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .875rem;
+  }
+}

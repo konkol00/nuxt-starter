@@ -1,0 +1,58 @@
+@use '../abstracts/variables' as *;
+
+#About {
+  .section__body {
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  .about__content {
+    h3 { margin-bottom: 1rem; }
+    p {
+      max-width: 55ch;
+      color: var(--c-muted);
+      font-size: 1.125rem;
+    }
+  }
+
+  .about__list {
+    display: grid;
+    gap: .75rem;
+    margin-top: 1.75rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      font-weight: 600;
+    }
+    svg { flex-shrink: 0; color: var(--c-primary); }
+  }
+
+  .about__image {
+    position: relative;
+    padding: .5rem;
+    border: 1px solid var(--c-border);
+    border-radius: calc(#{$radius-lg} + .5rem);
+    background: var(--c-surface);
+    box-shadow: var(--shadow);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 12% -6% -6% 12%;
+      z-index: -1;
+      border-radius: $radius-lg;
+      background: var(--c-gradient);
+      filter: blur(50px);
+      opacity: .35;
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: $radius-lg;
+    }
+  }
+}

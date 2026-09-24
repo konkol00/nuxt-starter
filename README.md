@@ -6,9 +6,20 @@ Nuxt-Starter is great for kicking off your landing page project quickly. It's a 
 
 **[View The Static Demo Site](https://konkol00.github.io/nuxt-starter/)**
 
-## Built with Nuxt 3 Minimal Starter
+## Built with Nuxt 4
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+No UI framework — just SCSS with CSS custom properties (automatic light/dark mode), `@nuxt/image` and `@nuxtjs/sitemap`. Icons come straight from `@mdi/js` via a tiny `AppIcon` component, so only the icons you import end up in the bundle.
+
+Project structure (Nuxt 4 conventions):
+
+```
+app/          # components, layouts, pages, assets
+public/       # static files (fonts, images, favicon)
+```
+
+Requires Node.js 20.19+.
+
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
 

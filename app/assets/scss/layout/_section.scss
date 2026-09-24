@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as *;
+
+.section {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+
+  &__title {
+    max-width: 40rem;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &.g-2 {
+      @media (min-width: $breakpoint-lg) { grid-template-columns: repeat(2, 1fr); }
+    }
+    &.g-3 {
+      @media (min-width: $breakpoint-lg) { grid-template-columns: repeat(3, 1fr); }
+    }
+    &.g-4 {
+      @media (min-width: $breakpoint-md) { grid-template-columns: repeat(2, 1fr); }
+      @media (min-width: $breakpoint-lg) { grid-template-columns: repeat(4, 1fr); }
+    }
+  }
+}

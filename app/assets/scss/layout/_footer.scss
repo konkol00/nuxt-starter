@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as *;
+
+.footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--c-border);
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .625rem;
+    font-weight: 700;
+    img { width: 36px; }
+  }
+
+  &__copy {
+    font-size: .9375rem;
+    color: var(--c-muted);
+    a { font-weight: 600; color: var(--c-text); }
+    a:hover { color: var(--c-primary); }
+  }
+}

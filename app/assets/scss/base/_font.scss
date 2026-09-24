@@ -1,0 +1,13 @@
+@each $weight, $file in (400: 'regular', 500: '500', 600: '600', 700: '700') {
+  @font-face {
+    font-family: 'Athiti';
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url('/fonts/athiti-#{$file}.woff2') format('woff2');
+  }
+}
+
+h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5rem); }
+h2 { font-size: clamp(1.875rem, 2.5vw + 1rem, 3rem); }
+h3 { font-size: clamp(1.25rem, 1vw + 1rem, 1.75rem); }

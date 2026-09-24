@@ -1,0 +1,144 @@
+@use '../abstracts/variables' as *;
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1030;
+  padding: 1.25rem 0;
+  transition: padding .3s $ease;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block: .625rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
+  }
+
+  &--scrolled {
+    padding: .75rem 0;
+
+    .nav__inner {
+      max-width: calc(1200px - 2rem);
+      width: calc(100% - 2rem);
+      background: var(--c-glass);
+      border-color: var(--c-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: saturate(180%) blur(14px);
+    }
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .625rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--c-text);
+    img { width: 42px; }
+  }
+
+  &__collapse {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    margin-inline: auto;
+  }
+
+  &__link {
+    display: block;
+    padding: .375rem .875rem;
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--c-muted);
+    transition: color .2s ease, background-color .2s ease;
+    &:hover {
+      color: var(--c-text);
+      background: color-mix(in srgb, var(--c-text) 6%, transparent);
+    }
+  }
+
+  &__toggler {
+    display: none;
+    position: relative;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    border-radius: 50%;
+
+    span {
+      position: absolute;
+      left: 11px;
+      width: 22px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--c-text);
+      transition: transform .3s $ease, opacity .2s ease;
+      &:nth-child(1) { top: 15px; }
+      &:nth-child(2) { top: 21px; }
+      &:nth-child(3) { top: 27px; }
+    }
+  }
+
+  &__backdrop { display: none; }
+
+  @media (max-width: #{$breakpoint-lg - 1px}) {
+    &__toggler { display: block; }
+
+    &__collapse {
+      position: fixed;
+      inset: 0 0 0 auto;
+      z-index: 1;
+      width: min(80vw, 320px);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 5.5rem 1.5rem 2rem;
+      background: var(--c-surface);
+      border-left: 1px solid var(--c-border);
+      box-shadow: var(--shadow);
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform .35s $ease, visibility .35s;
+    }
+
+    &__list {
+      flex-direction: column;
+      align-items: stretch;
+      margin: 0 0 1rem;
+    }
+
+    &__link { padding: .75rem 1rem; font-size: 1.125rem; }
+
+    &__backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    &--open {
+      .nav__collapse { transform: none; visibility: visible; }
+      .nav__backdrop { opacity: 1; pointer-events: auto; }
+      // backdrop-filter would turn the inner bar into the drawer's containing block
+      .nav__inner { backdrop-filter: none; }
+      .nav__toggler span {
+        &:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        &:nth-child(2) { opacity: 0; }
+        &:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@use '../abstracts/variables' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform .25s $ease, box-shadow .25s $ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+
+  &:hover { transform: translateY(-2px); }
+  &:active { transform: translateY(0); }
+
+  &-sm {
+    padding: .5rem 1.125rem;
+    font-size: 1rem;
+  }
+
+  &-primary {
+    background: var(--c-gradient);
+    color: #fff;
+    box-shadow: var(--shadow-primary);
+    &:hover { color: #fff; box-shadow: 0 16px 36px -10px rgba(225, 52, 40, .7); }
+  }
+
+  &-outline {
+    background: var(--c-surface);
+    border-color: var(--c-border);
+    color: var(--c-text);
+    box-shadow: var(--shadow-sm);
+    &:hover { color: var(--c-text); border-color: var(--c-primary); }
+  }
+
+  &-ghost {
+    border-color: var(--c-border);
+    color: var(--c-text);
+    &:hover { color: var(--c-primary); border-color: var(--c-primary); }
+  }
+
+  &-light {
+    background: #fff;
+    color: $primary-color;
+    &:hover { color: $primary-color; box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .45); }
+  }
+
+  &-outline-light {
+    border-color: rgba(255, 255, 255, .5);
+    color: #fff;
+    &:hover { color: #fff; background: rgba(255, 255, 255, .12); border-color: #fff; }
+  }
+}
